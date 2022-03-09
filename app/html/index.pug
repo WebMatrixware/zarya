@@ -1,0 +1,53 @@
+doctype html
+
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel='stylesheet', href='modules/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='assets/css/style.css')
+    Title Zarya
+  body
+    nav.navbar.navbar-expand-medium.navbar-dark.bg-dark.px-2
+      span.navbar-brand Zarya
+      div.d-inline-block
+        div.row
+          span.text-end.text-light
+            span Total&nbsp;
+            i.fa-solid.fa-microchip
+            span(data-bind='text: " " + totalCores()')
+        div.row
+          span.text-end.text-light
+            span Total&nbsp;
+            i.fa-solid.fa-memory
+            span(data-bind='text: " " + totalMemory().toFixed(2) + "GB"')
+    div.container-fluid.mt-3
+      div.row.row-cols-1.row-cols-md-2.row-cols-lg-4.g-2(data-bind='foreach: vms')
+        div.cols
+          div.card.p-0(data-bind='class: bgColor')
+            div.card-body.p-1
+              h5.card-title.text-light.my-0.d-inline-block(data-bind='text: name')
+              span &nbsp;&nbsp;
+              span.text-dark(data-bind='text: vm_id')
+              hr.text-light.my-1
+              div.row.text-light.my-0
+                div.col-1
+                  i.fa-solid.fa-microchip
+                div.col-5(data-bind='text: cores')
+                div.col-1
+                  i.fa-solid.fa-memory
+                div.col-5(data-bind='text: memory().toFixed(2) + "GB"')
+              //- div.row(data-bind='foreach: drives')
+              //-   div.row
+              //-     div.col-4(data-bind='text: name')
+              //-     div.col-4(data-bind='text: size().toFixed(2) + "GB"')
+              //-     div.col-4(data-bind='text: free().toFixed(2) + "GB"')
+      
+    script(src='modules/jquery/dist/jquery.min.js')
+    script(src='modules/popper.js/dist/umd/popper.min.js')
+    script(src='modules/bootstrap/dist/js/bootstrap.min.js')
+    script(src='modules/knockout/build/output/knockout-latest.js')
+    script(src='modules/superagent/dist/superagent.min.js')
+    script(src='modules/@fortawesome/fontawesome-free/js/all.js')
+    script(src='assets/js/config.js')
+    script(src='assets/js/index.js')
