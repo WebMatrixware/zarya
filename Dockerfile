@@ -18,4 +18,4 @@ WORKDIR /opt/zarya/app
 ENTRYPOINT npm start
 
 LABEL author="Ben Lanning <blanning@all-mode.com>"
-LABEL version="1.0.2"
+LABEL version="1.0.4"
