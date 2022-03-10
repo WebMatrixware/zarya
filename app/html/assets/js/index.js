@@ -48,7 +48,6 @@ let getVMList = async function getVMList() {
           .get(`${address}/${v.vm_id()}/vmdrives`)
           .set('token', token)
           .then((res) => {
-            console.log(res.body);
             res.body.forEach(async (d) => {
               let disk = new drive(d.key, d.value.capacity, d.value.free_space);
               v.drives.push(disk);
@@ -135,6 +134,20 @@ function viewModel() {
     });
 
     return m;
+  });
+  self.totalVMs = ko.computed(function() {
+    return self.vms().length;
+  });
+  self.totalDisk = ko.computed(function() {
+    let d = 0;
+
+    self.vms().forEach((v) => {
+      v.drives().forEach((disk) => {
+        d += (disk.size() * 1);
+      });
+    });
+
+    return d;
   });
 };
 

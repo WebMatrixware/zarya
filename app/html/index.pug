@@ -10,17 +10,29 @@ html
   body
     nav.navbar.navbar-expand-medium.navbar-dark.bg-dark.px-2
       span.navbar-brand Zarya
-      div.d-inline-block
+      div.d-inline-block.w-50
         div.row
-          span.text-end.text-light
-            span Total&nbsp;
-            i.fa-solid.fa-microchip
-            span(data-bind='text: " " + totalCores()')
+          div.col-6
+            span.text-end.text-light
+              span Total&nbsp;
+              i.fa-solid.fa-server
+              span(data-bind='text: " " + totalVMs()')
+          div.col-6
+            span.text-end.text-light
+              span Total&nbsp;
+              i.fa-solid.fa-database
+              span(data-bind='text: " " + totalDisk().toFixed(2) + "GB"')
         div.row
-          span.text-end.text-light
-            span Total&nbsp;
-            i.fa-solid.fa-memory
-            span(data-bind='text: " " + totalMemory().toFixed(2) + "GB"')
+          div.col-6
+            span.text-end.text-light
+              span Total&nbsp;
+              i.fa-solid.fa-microchip
+              span(data-bind='text: " " + totalCores()')
+          div.col-6
+            span.text-end.text-light
+              span Total&nbsp;
+              i.fa-solid.fa-memory
+              span(data-bind='text: " " + totalMemory().toFixed(2) + "GB"')
     div.container-fluid.mt-3
       div.row.row-cols-1.row-cols-md-2.row-cols-lg-4.g-2(data-bind='foreach: vms')
         div.cols
